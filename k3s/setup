@@ -1,0 +1,46 @@
+#!/bin/sh
+
+#installing requirements
+
+echo -e "\e[1;31m Installing kubectl \e[0m"
+
+sudo pacman -S kubectl -y
+
+echo -e "\e[1;31m Installing kustomize \e[0m"
+
+sudo pacman -S kustomize -y
+
+echo -e "\e[1;31m Installing hugo \e[0m"
+sudo pacman -S hugo -y
+
+echo -e "\e[1;31m Installing git \e[0m"
+sudo pacman -S git -y
+
+echo -e "\e[1;31m Installing jq yq  \e[0m"
+sudo pacman -S jq yq -y
+
+echo -e "\e[1;31m Installing jq yq \e[0m"
+curl -sSL https://cli.openfaas.com | sudo -E sh
+
+echo -e "\e[1;31m Installing Docker and Docker-Compose \e[0m"
+sudo pacman -S docker docker-compose -y
+
+echo -e "\e[1;31m Installings Docker and Docker-COMpsoe \e[0m"
+sudo pacman -S podman -y
+
+echo -e "\e[1;31m Installing kubeseal \e[0m"
+sudo pacman -S kubeseal-bin
+
+echo -e "\e[1;31m Installing flux \e[0m"
+sudo pacman -S flux-go
+
+echo -e "\e[1;31m Installing k3sup \e[0m"
+sudo pacman -S k3sup
+sudo install k3sup /usr/local/bin/
+
+echo -e "\e[1;31m Installing npm for cdk8s \e[0m"
+sudo pacman -S npm
+
+echo -e "\e[1;31m Installing cdk8s \e[0m"
+sudo npm install -g cdk8s-cli
+
