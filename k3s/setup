@@ -44,3 +44,20 @@ sudo pacman -S npm
 echo -e "\e[1;31m Installing cdk8s \e[0m"
 sudo npm install -g cdk8s-cli
 
+echo -e "\e[1;31 Binding set enable-bracketed-patse on \e[0m"
+echo -e "\e[1;31 THIS IS SET FOR THE CURRENT SHELL NOT FUTURE ENVIROMENTS \e[0m"
+bind 'set enable-bracketed-paste on'
+
+#FLux creating a local git repo for flux
+echo -e "\e[1;31 Setting variables for flux and git repo \e[0m"
+FLUX_INFRA_DIR=${HOME}/git/flux-infra
+CLUSTER=k3s.example.com
+
+#Making folders and git repo
+mkdir -p ${FLUX_INFRA_DIR}/${CLUSTER} && \
+git -C ${FLUX_INFRA_DIR} init && \
+cd ${FLUX_INFRA_DIR}/${CLUSTER} && \
+echo Cluster working directory: $(pwd)
+
+
+
