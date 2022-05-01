@@ -32,12 +32,6 @@ sudo pacman -S docker docker-compose -y
 echo -e "\e[1;31m Installings Docker and Docker-COMpsoe \e[0m"
 sudo pacman -S podman -y
 
-echo -e "\e[1;31m Installing kubeseal \e[0m"
-sudo pacman -S kubeseal-bin
-
-echo -e "\e[1;31m Installing flux \e[0m"
-sudo pacman -S flux-go
-
 echo -e "\e[1;31m Installing k3sup \e[0m"
 sudo pacman -S k3sup
 sudo install k3sup /usr/local/bin/
