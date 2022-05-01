@@ -3,12 +3,16 @@
 #installing requirements
 
 echo -e "\e[1;31m Installing kubectl \e[0m"
-
 sudo pacman -S kubectl -y
 
 echo -e "\e[1;31m Installing kustomize \e[0m"
-
 sudo pacman -S kustomize -y
+
+echo -e "\e[1;31m Installing kubeseal \e[0m"
+sudo pacman -S kubeseal -y
+
+echo -e "\e[1;31m Installing Flux \e[0m"
+sudo pacman -S flux-go -y
 
 echo -e "\e[1;31m Installing hugo \e[0m"
 sudo pacman -S hugo -y
@@ -19,7 +23,7 @@ sudo pacman -S git -y
 echo -e "\e[1;31m Installing jq yq  \e[0m"
 sudo pacman -S jq yq -y
 
-echo -e "\e[1;31m Installing jq yq \e[0m"
+echo -e "\e[1;31m Installing OpenFaaS \e[0m"
 curl -sSL https://cli.openfaas.com | sudo -E sh
 
 echo -e "\e[1;31m Installing Docker and Docker-Compose \e[0m"
