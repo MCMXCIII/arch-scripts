@@ -1,0 +1,11 @@
+HOST_WORKSTATION=workstation-host
+HOST_USER=user
+HOST_IP_ADDRESS=X.X.X.X
+
+cat <<EOF >> ${HOME}/.bashrc
+## Setup podman remote to host workstation:
+podman system connection add \
+  ${HOST_WORKSTATION} ssh://${HOST_USER}@${HOST_IP_ADDRESS} \
+  --identity ~/.ssh/id_rsa
+EOF
+

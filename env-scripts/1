@@ -1,0 +1,5 @@
+# Enable for the current shell:
+bind 'set enable-bracketed-paste on'
+# Enable for future environments:
+echo "set enable-bracketed-paste on" >> ${HOME}/.inputrc
+

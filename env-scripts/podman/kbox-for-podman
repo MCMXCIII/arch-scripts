@@ -1,0 +1,5 @@
+## You can create multiple aliases for different environments
+## Just make sure to use a different volume name for each one (eg. kbox:/root)
+alias kbox="podman run --rm -it -v kbox:/root -v ${HOME}/git:/root/git \
+   -v ${HOME}/.gitconfig:/root/.gitconfig --name kbox-${RANDOM} kube-toolbox"
+

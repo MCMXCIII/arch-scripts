@@ -1,0 +1,9 @@
+#!/bin/bash
+FLUX_INFRA_DIR=${HOME}/git/flux-infra
+CLUSTER=k3s.example.com
+
+mkdir -p ${FLUX_INFRA_DIR}/${CLUSTER} && \
+git -C ${FLUX_INFRA_DIR} init && \
+cd ${FLUX_INFRA_DIR}/${CLUSTER} && \
+echo Cluster working directory: $(pwd)
+
