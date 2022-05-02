@@ -1,5 +1,12 @@
 #!/bin/sh
 
+#Detecing IPAddress of this machine
+echo -e "\e[1;31m Detecing IP address of this machine. \e[0m"
+
+IP=$(curl ipinfo.io/ip)
+
+echo "$IP"
+
 #installing requirements
 
 echo -e "\e[1;31m Installing kubectl \e[0m"
@@ -50,11 +57,26 @@ echo -e "\e[1;31 installing k3sup \e[0m"
 curl -sLS https://get.k3sup.dev | sh
 k3sup --help
 
+echo -e "\e[1;31 Installing ufw firewall \e[0m"
+pacman -S ufw
+ufw allow 22/tcp
+ufw allow 80/tcp
+ufw allow 443/tcp
+ufw allow 6443/tcp
+ufw allow 2222/tcp
+ufw enable
+systemctl enable --now ufw
+ufw reload
+
+echo -e "\e[1;31 setting k3sup variables. \e[0m"
+export SSH_IP_ADDRESS="$IP"
+export KUBE_CONFIG=${HOME}/.kube/config
+
 
 #FLux creating a local git repo for flux
 echo -e "\e[1;31 Setting variables for flux and git repo \e[0m"
 FLUX_INFRA_DIR=${HOME}/git/flux-infra
-CLUSTER=k3s.example.com
+CLUSTER="$IP"
 
 #Making folders and git repo
 mkdir -p ${FLUX_INFRA_DIR}/${CLUSTER} && \
@@ -62,5 +84,7 @@ git -C ${FLUX_INFRA_DIR} init && \
 cd ${FLUX_INFRA_DIR}/${CLUSTER} && \
 echo Cluster working directory: $(pwd)
 
-
-
+#standing up k3sup instance
+mkdir -p ${HOME}/.kube
+k3sup install --ip ${IP} --local-path ${KUBE_CONFIG} \
+	--k3s-extra-arg '--disable traefik'
