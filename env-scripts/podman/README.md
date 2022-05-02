@@ -9,3 +9,9 @@ this folder contains the scripts needed to install podman and use all of the too
 "ssh-keygen"
 
 I reccomend using a keys with 4026b size
+
+Looking at the podman box you can run 
+podman  system connection list
+
+podman run --rm -it hello world
+ to get a hello world box.

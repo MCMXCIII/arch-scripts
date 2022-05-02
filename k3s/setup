@@ -46,6 +46,11 @@ echo -e "\e[1;31 Binding set enable-bracketed-patse on \e[0m"
 echo -e "\e[1;31 THIS IS SET FOR THE CURRENT SHELL NOT FUTURE ENVIROMENTS \e[0m"
 bind 'set enable-bracketed-paste on'
 
+echo -e "\e[1;31 installing k3sup \e[0m"
+curl -sLS https://get.k3sup.dev | sh
+k3sup --help
+
+
 #FLux creating a local git repo for flux
 echo -e "\e[1;31 Setting variables for flux and git repo \e[0m"
 FLUX_INFRA_DIR=${HOME}/git/flux-infra
