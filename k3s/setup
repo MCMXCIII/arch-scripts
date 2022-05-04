@@ -87,4 +87,4 @@ echo Cluster working directory: $(pwd)
 #standing up k3sup instance
 mkdir -p ${HOME}/.kube
 k3sup install --ip ${IP} --local-path ${KUBE_CONFIG} \
-	--k3s-extra-arg '--disable traefik'
+	--k3s-extra-args '--disable traefik'
