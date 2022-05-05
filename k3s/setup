@@ -10,41 +10,41 @@ echo "$IP"
 #installing requirements
 
 echo -e "\e[1;31m Installing kubectl \e[0m"
-sudo pacman -S kubectl -y
+sudo pacman --noconfirm -S kubectl -y
 
 echo -e "\e[1;31m Installing kustomize \e[0m"
-sudo pacman -S kustomize -y
+sudo pacman --noconfirm -S kustomize -y
 
 echo -e "\e[1;31m Installing kubeseal \e[0m"
-sudo pacman -S kubeseal -y
+sudo pacman --noconfirm -S kubeseal -y
 
 echo -e "\e[1;31m Installing Flux \e[0m"
-sudo pacman -S flux-go -y
+sudo pacman --noconfirm -S flux-go -y
 
 echo -e "\e[1;31m Installing hugo \e[0m"
-sudo pacman -S hugo -y
+sudo pacman --noconfirm -S hugo -y
 
 echo -e "\e[1;31m Installing git \e[0m"
-sudo pacman -S git -y
+sudo pacman --noconfirm -S git -y
 
 echo -e "\e[1;31m Installing jq yq  \e[0m"
-sudo pacman -S jq yq -y
+sudo pacman --noconfirm -S jq yq -y
 
 echo -e "\e[1;31m Installing OpenFaaS \e[0m"
 curl -sSL https://cli.openfaas.com | sudo -E sh
 
 echo -e "\e[1;31m Installing Docker and Docker-Compose \e[0m"
-sudo pacman -S docker docker-compose -y
+sudo pacman --noconfirm -S docker docker-compose -y
 
 echo -e "\e[1;31m Installings Docker and Docker-COMpsoe \e[0m"
-sudo pacman -S podman -y
+sudo pacman --noconfirm -S podman -y
 
 echo -e "\e[1;31m Installing k3sup \e[0m"
 sudo pacman -S k3sup
 sudo install k3sup /usr/local/bin/
 
 echo -e "\e[1;31m Installing npm for cdk8s \e[0m"
-sudo pacman -S npm
+sudo pacman --noconfirm -S npm
 
 echo -e "\e[1;31m Installing cdk8s \e[0m"
 sudo npm install -g cdk8s-cli
@@ -58,7 +58,7 @@ curl -sLS https://get.k3sup.dev | sh
 k3sup --help
 
 echo -e "\e[1;31 Installing ufw firewall \e[0m"
-pacman -S ufw
+sudo pacman --noconfirm -S ufw
 ufw allow 22/tcp
 ufw allow 80/tcp
 ufw allow 443/tcp
@@ -85,6 +85,7 @@ cd ${FLUX_INFRA_DIR}/${CLUSTER} && \
 echo Cluster working directory: $(pwd)
 
 #standing up k3sup instance
+ssh-keygen -t rsa -b 4096
 mkdir -p ${HOME}/.kube
 k3sup install --ip ${IP} --local-path ${KUBE_CONFIG} \
 	--k3s-extra-args '--disable traefik'
